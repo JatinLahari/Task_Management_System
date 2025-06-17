@@ -1,0 +1,105 @@
+Assignment: Build a RESTful Task Management API
+---------------------------------------------------------
+📘 Objective:
+Create a fully functional REST API to manage users and their personal task lists. This API should support user authentication and CRUD operations for tasks.
+
+🧱 Tech Stack:
+Node.js  ------------------> Used
+
+Express.js ----------------> Used
+
+JWT (Authentication)  -----> Used
+
+bcrypt.js (Password hashing) --> Used
+
+MySQL with Sequelize (or MongoDB with Mongoose — your choice) ----> Used
+
+dotenv (for environment variables) ---> Used
+
+cookie-parser ---> Used
+
+📌 Requirements:
+1. User Authentication
+Routes:
+POST /api/register – Register a new user  --> Done
+
+POST /api/login – Login and receive a JWT token in cookies --> Done
+
+GET /api/profile – Get logged-in user profile --> Done
+
+POST /api/logout – Clear the authentication cookie  --> Done
+
+User Model:    --> Done
+js
+Copy
+Edit
+{
+  id: UUID,
+  name: String,
+  email: String (unique),
+  password: String (hashed),
+  createdAt, updatedAt
+}
+2. Task Management (Protected Routes)  --> Done
+Routes:
+POST /api/tasks – Create a new task  --> Done
+
+GET /api/tasks – Get all tasks for logged-in user   --> Done
+
+GET /api/tasks/:id – Get task by ID    --> Done
+
+PUT /api/tasks/:id – Update a task     --> Done
+
+DELETE /api/tasks/:id – Delete a task  --> Done
+
+Task Model:  --> Done
+js
+Copy
+Edit
+{
+  id: UUID,
+  title: String,
+  description: String,
+  status: Enum ["pending", "in-progress", "completed"],
+  dueDate: Date,
+  userId: UUID (foreign key),
+  createdAt, updatedAt
+}
+🔐 Authentication Middleware:
+Protect all /api/tasks routes using a JWT-based middleware.   --> Done
+
+Use a cookie to store the token (set httpOnly, secure in production).    --> Done
+
+✨ Bonus Features (Optional)
+Filter tasks by status or dueDate
+
+Pagination on the GET /api/tasks
+
+Use bcrypt.compare() asynchronously
+
+Add soft delete (isDeleted flag)
+
+Add file upload (e.g., task attachments)
+
+Swagger documentation
+
+🧪 Deliverables:
+A GitHub repo with clear instructions to run the project:
+
+ini
+Copy
+Edit
+# .env file example
+DB_URL=...
+JWT_SECRET=...
+PORT=3000
+Include a Postman collection or API documentation (can be markdown or Swagger).
+
+📚 Learning Goals:
+Design and implement real-world REST APIs
+
+Understand JWT-based auth and middleware protection
+
+Practice with a database ORM (Sequelize or Mongoose)
+
+Use environment variables and secure cookie handling
